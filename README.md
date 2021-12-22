@@ -1,6 +1,6 @@
 # Molecule for Debian
 Options:
-  - install molecule
+  - install molecule in virtualenv
 
 Installation:
 1) Install from Github (git installed on your server)
