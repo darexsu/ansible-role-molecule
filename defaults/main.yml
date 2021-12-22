@@ -1,0 +1,8 @@
+#----------Installation----------#
+molecule_install: true
+molecule_install_list: [ nginx ]
+
+
+
+#------------Settings------------#
+#------------Actions-------------#
