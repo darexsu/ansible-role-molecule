@@ -6,7 +6,7 @@
       - python3-venv
     state: present
     
-- name: Check the path for Python
+- name: check the path for Python
   command: which python3
   register: python_interpreter_path
 
