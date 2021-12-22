@@ -6,21 +6,14 @@
       - python3-venv
     state: present
 
-- name: Ensure molecule is installed in a virtual environment
-  pip:
-    name: molecule
-    version: ""
-    state: present
-    virtualenv: "/home/darexsu/.virtualenvs/molecule"
-    virtualenv_command: "/usr/bin/python3.9 -m venv"
-    virtualenv_site_packages: "false"
-
 - name: Ensure molecule support packages are installed in a virtual environment
   pip:
     name: "molecule[{{ item }}]"
     version: ""
     state: present
-    virtualenv: "/home/darexsu/.virtualenvs/molecule"
-    virtualenv_command: "/usr/bin/python3.9 -m venv"
+    virtualenv: "{{ molecule_install_virtualenv }}"
+    virtualenv_command: "{{ ansible_python_interpreter }} -m venv"
     virtualenv_site_packages: "false"
   with_items: "{{ molecule_install_list }}"
+
+  source /home/darexsu/.virtualenvs/molecule/bin/activate
