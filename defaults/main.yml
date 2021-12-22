@@ -1,5 +1,5 @@
 #----------Installation----------#
-molecule_install: true
+molecule_install: false
 molecule_install_list: [ docker, lint ]
 molecule_install_virtualenv: "{{ ansible_user_dir }}/molecule"
 
