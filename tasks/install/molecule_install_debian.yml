@@ -1,32 +1,26 @@
 - name: ensure dependencies are installed.
-  apt:
+  ansible.builtin.apt:
     name:
       - python3-pip
       - libssl-dev
-      - python3-venv    
+      - python3-venv
     state: present
 
-- name: add nginx repository gpg key
-  apt_key:
-    url: "{{ nginx_repository_gpg_key }}"
+- name: Ensure molecule is installed in a virtual environment
+  pip:
+    name: molecule
+    version: ""
     state: present
-  when: nginx_repository
+    virtualenv: "/home/darexsu/.virtualenvs/molecule"
+    virtualenv_command: "/usr/bin/python3.9 -m venv"
+    virtualenv_site_packages: "false"
 
-- name: add nginx repository
-  apt_repository:
-    repo: "deb {{ nginx_repository_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} nginx"
+- name: Ensure molecule support packages are installed in a virtual environment
+  pip:
+    name: "molecule[{{ item }}]"
+    version: ""
     state: present
-    update_cache: yes
-  when: nginx_repository
-
-- name: install nginx packages.
-  apt:
-    name: "{{ item }}"
-    state: present
-  ignore_errors: yes
-  with_items: "{{ nginx_install_list }}"
-
-- name: ensure nginx is started
-  ansible.builtin.systemd:
-    name: "nginx"
-    state: started
+    virtualenv: "/home/darexsu/.virtualenvs/molecule"
+    virtualenv_command: "/usr/bin/python3.9 -m venv"
+    virtualenv_site_packages: "false"
+  with_items: "{{ molecule_install_list }}"
