@@ -18,3 +18,9 @@ ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
       vars:
         molecule_install: true
 ```
+Testing:
+1) activate virtualenv
+```
+source molecule/bin/activate
+```
+2) 
