@@ -2,6 +2,7 @@
 Options:
   - install Molecule in user home directory
   - install Molecule in virtualenv
+
 Dependencies:
   - Ansible
   - Docker
