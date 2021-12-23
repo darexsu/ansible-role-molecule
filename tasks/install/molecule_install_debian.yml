@@ -10,9 +10,6 @@
   command: which python3
   register: molecule_check_python_3_path 
   
-- debug:
-   msg: "{{ molecule_install_virtualenv }} {{ ansible_env.HOME }} {{ ansible_user }} {{ lookup('env','HOME') }} "
-   
 - name: install molecule in virtualenv
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"
