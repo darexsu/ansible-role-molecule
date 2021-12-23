@@ -1,4 +1,4 @@
-#--------molecule_install: true----------#
+#-------molecule_install: true-------#
 - name: ensure dependencies are installed.
   ansible.builtin.apt:
     name: "{{ item }}"
@@ -6,6 +6,7 @@
   with_items: "{{ molecule_install_dependencies_list }}"
     
 #-molecule_install_virtualenv: false | install to [ /home/user/.local/ ]
+#-for sudo user
 - name: upgrade setuptools
   ansible.builtin.pip:
     name: "setuptools"   
@@ -13,7 +14,7 @@
     extra_args: "--upgrade --user"
   become: yes
   become_user: "{{ ansible_user }}"
-  when: not molecule_install_virtualenv
+  when: not molecule_install_virtualenv and ansible_user != "root"
   
 - name: install molecule in [ home/user/.local ]
   ansible.builtin.pip:
@@ -23,16 +24,32 @@
   with_items: "{{ molecule_install_packages_list }}"
   become: yes
   become_user: "{{ ansible_user }}"  
-  when: not molecule_install_virtualenv
-
-- name: add path [ /.locale/bin ] to environment $PATH
+  when: not molecule_install_virtualenv and ansible_user != "root"
+  
+ - name: add path [ /.locale/bin ] to environment $PATH
   ansible.builtin.shell:
     cmd: ". ./.profile"
   become: yes
   become_user: "{{ ansible_user }}"  
-  when: not molecule_install_virtualenv
+  when: not molecule_install_virtualenv and ansible_user != "root"
+ 
+ #-for root
+ - name: upgrade setuptools
+  ansible.builtin.pip:
+    name: "setuptools"   
+    state: present
+  when: not molecule_install_virtualenv and ansible_user == "root"
   
-#-molecule_install_virtualenv: true | install to virtualenv [ home/user/molecule ]
+ - name: install molecule in [ /usr/bin ]
+  ansible.builtin.pip:
+    name: "molecule[ {{ item }} ]"  
+    state: present    
+  with_items: "{{ molecule_install_packages_list }}"  
+  when: not molecule_install_virtualenv and ansible_user == "root"
+
+
+  
+#--molecule_install_virtualenv: true | install to virtualenv [ home/user/molecule ]
 - name: Check the path for Python
   command: which python3
   register: molecule_check_python_3_path 
