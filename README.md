@@ -5,9 +5,11 @@ Options:
   - Molecule virtualenv for root [ /root/molecule ]
   - Molecule virtualenv for sudo [ /home/user/molecule ]
 
-Dependencies:
-  - Ansible
-  - Docker
+System dependencies:
+  - Ansible. installed
+  - Docker. started
+Ansible dependencies:
+  - None
 # Installation without virtualenv:
 1) Install from Github (git installed on your server)
 ```
