@@ -5,17 +5,12 @@
       - libssl-dev
       - python3-venv
     state: present
-    
-- name: check the path for Python
-  command: which python3
-  register: python_interpreter_path
 
-- name: Ensure molecule support packages are installed in a virtual environment
-  pip:
-    name: "molecule[{{ item }}]"
+- name: install molecule in virtualenv
+  ansible.builtin.pip:
+    name: "molecule[ {{ item }} ]"
     version: ""
     state: present
     virtualenv: "{{ molecule_install_virtualenv }}"
-    virtualenv_command: "{{ python_interpreter_path }} -m venv"
-    virtualenv_site_packages: "false"
+    virtualenv_site_packages: "yes"
   with_items: "{{ molecule_install_list }}"
