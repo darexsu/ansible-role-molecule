@@ -13,14 +13,14 @@
     name: "setuptools"   
     state: present
     extra_args: "--upgrade --user" 
-  when: molecule_install_virtualenv is not defined
+  when: not molecule_install_virtualenv
   
 - name: install molecule in /home/user/.local
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"  
     state: present
     extra_args: "--user" 
-  when: molecule_install_virtualenv is not defined
+  when: not molecule_install_virtualenv
   
 #-molecule_install_virtualenv: true
 - name: Check the path for Python
