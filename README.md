@@ -23,4 +23,7 @@ Testing:
 ```
 source molecule/bin/activate
 ```
-2) 
+2) init test role
+```
+molecule init role my_new_role --driver-name docker
+```
