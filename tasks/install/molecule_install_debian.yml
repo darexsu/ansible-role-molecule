@@ -58,7 +58,7 @@
 - name: Define version of php-fpm.service
   set_fact:
     molecule_install_virtualenv_path: "{{ ansible_env.HOME }}"
-  become: false
+  become_user: "{{ ansible_user }}"
   
 - name: asdsa 
   debug:
