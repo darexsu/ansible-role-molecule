@@ -20,6 +20,7 @@
     name: "molecule[ {{ item }} ]"  
     state: present
     extra_args: "--user" 
+  with_items: "{{ molecule_install_list }}"
   when: not molecule_install_virtualenv
   
 #-molecule_install_virtualenv: true
