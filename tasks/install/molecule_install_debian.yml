@@ -50,19 +50,24 @@
 
   
 #--molecule_install_virtualenv: true | install to virtualenv [ home/user/molecule ]
-- name: Check the path for Python
+- name: check the path for Python
   command: which python3
   register: molecule_check_python_3_path 
   when: molecule_install_virtualenv
   
-- name: --------------
+- name: define home directory for root
   set_fact:
-    molecule_install_virtualenv_path: "{{ ansible_env.HOME }}"
+    molecule_install_home: "{{ ansible_env.HOME }}"
+  become_user: "{{ ansible_user }}"  
+  
+- name: define home directory for sudo user
+  set_fact:
+    molecule_install_virtualenv_path: "{{ ansible_env.PWD }}"
   become_user: "{{ ansible_user }}"  
   
 - name: asdsa 
   debug:
-   msg: "{{ molecule_install_virtualenv_path }} {{ ansible_user }}"
+   msg: "{{ molecule_install_virtualenv_path }} {{ molecule_install_home }}"
 
 - name: install molecule in virtualenv
   ansible.builtin.pip:
