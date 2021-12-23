@@ -1,7 +1,10 @@
-# ( NOT WORKING ) Molecule for Debian
+# Molecule for Debian. Docker
 Options:
   - install Molecule in user home directory
   - install Molecule in virtualenv
+Dependencies:
+  - Ansible
+  - Docker
 
 # Installation user home directory:
 1) Install from Github (git installed on your server)
