@@ -26,7 +26,7 @@
   become_user: "{{ ansible_user }}"  
   when: not molecule_install_virtualenv and ansible_user != "root"
   
- - name: add path /.locale/bin to environment 
+- name: add path /.locale/bin to environment 
   ansible.builtin.shell:
     cmd: ". ./.profile"
   become: yes
@@ -34,13 +34,13 @@
   when: not molecule_install_virtualenv and ansible_user != "root"
  
  #-for root
- - name: upgrade setuptools
+- name: upgrade setuptools
   ansible.builtin.pip:
     name: "setuptools"   
     state: present
   when: not molecule_install_virtualenv and ansible_user == "root"
   
- - name: install molecule in /usr/bin
+- name: install molecule in /usr/bin
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"  
     state: present    
