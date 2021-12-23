@@ -5,11 +5,6 @@
     state: present
   with_items: "{{ molecule_install_dependencies_list }}"
 
-- name: Define version of php-fpm.service
-  set_fact:
-    molecule_install_home: "{{ lookup('ansible_env','HOME') }}"
-  become: no
-
 #-molecule_install_virtualenv: false | install to [ /home/user/.local/ ]
 #-for sudo user
 - name: upgrade setuptools
@@ -63,7 +58,7 @@
 
 - name: asdsa 
   debug:
-   msg: "{{ ansible_env }} {{ molecule_install_home }}"
+   msg: "{{ ansible_facts }}"
 
 
 
