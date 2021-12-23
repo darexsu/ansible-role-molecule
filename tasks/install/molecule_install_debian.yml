@@ -62,7 +62,7 @@
   
 - name: asdsa 
   debug:
-   msg: "{{ molecule_install_virtualenv_path }} {{ ansible_user }} {{ ansible_become_user}} "
+   msg: "{{ molecule_install_virtualenv_path }} {{ ansible_user }}"
 
 - name: install molecule in virtualenv
   ansible.builtin.pip:
