@@ -7,7 +7,7 @@
 
 - name: check home path 
   ansible.builtin.debug:
-  var: ansible_env.HOME 
+   var: ansible_env.HOME 
   register: molecule_install_home 
   become: no
 
