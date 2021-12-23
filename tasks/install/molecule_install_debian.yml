@@ -25,9 +25,9 @@
   become_user: "{{ ansible_user }}"  
   when: not molecule_install_virtualenv
 
-- name: add path /.locale/bin to environment variables
+- name: add path /.locale/bin to environment $PATH
   ansible.builtin.shell:
-    cmd: ". ./.profile && export PATH=$PATH:{{ lookup('env','HOME') }}/.local/bin/:"
+    cmd: ". ./.profile"
   become: yes
   become_user: "{{ ansible_user }}"  
   when: not molecule_install_virtualenv
