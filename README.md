@@ -23,7 +23,7 @@ ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
         molecule_install: true        
 ```
 Testing:
-1) You have to re-login. if you are already logged as molecule-user.
+1) You have to re-login. if you have already logged as molecule-user.
 ```
 exit
 ```
