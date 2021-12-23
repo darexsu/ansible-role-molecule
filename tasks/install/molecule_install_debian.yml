@@ -11,7 +11,9 @@
   register: molecule_check_python_3_path 
   
 - debug:
-   var: molecule_install_virtualenv 
+   var: 
+    - molecule_install_virtualenv 
+    - ansible_env.HOME
    
 - name: install molecule in virtualenv
   ansible.builtin.pip:
