@@ -58,12 +58,12 @@
 - name: define home directory for root
   set_fact:
    molecule_install_home_directory: "{{ ansible_env.HOME }}"
-  when: ansible_user == "root" 
+  when: molecule_install_virtualenv and ansible_user == "root" 
   
 - name: define home directory for sudo user
   set_fact:
     molecule_install_home_directory: "{{ ansible_env.PWD }}"
-  when: ansible_user != "root"
+  when: molecule_install_virtualenv and ansible_user != "root"
 
 - name: install molecule in virtualenv
   ansible.builtin.pip:
