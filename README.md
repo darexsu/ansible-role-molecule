@@ -6,6 +6,7 @@ Options:
   - Molecule virtualenv for sudo [ /home/user/molecule ]
 
 System dependencies:
+  - Debian
   - Ansible. installed
   - Docker. started
 
