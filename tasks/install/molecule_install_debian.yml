@@ -5,10 +5,9 @@
     state: present
   with_items: "{{ molecule_install_dependencies_list }}"
 
-- name: check home path 
-  ansible.builtin.debug:
-   var: "{{ lookup('ansible_env','HOME') }}"
-  register: molecule_install_home 
+- name: Define version of php-fpm.service
+  set_fact:
+    molecule_install_home: "{{ lookup('ansible_env','HOME') }}"
   become: no
 
 #-molecule_install_virtualenv: false | install to [ /home/user/.local/ ]
