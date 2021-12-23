@@ -58,7 +58,7 @@
 
 - name: asdsa 
   debug:
-   msg: "{{ ansible_user }} {{ molecule_install_virtualenv_path }}"
+   msg: "{{ ansible_env }} {{ molecule_install_virtualenv_path }}"
 
 
 
