@@ -6,7 +6,8 @@
   with_items: "{{ molecule_install_dependencies_list }}"
 
 - name: check home path 
-  var: "{{ ansible_env.HOME }}"
+  ansible.builtin.debug:
+  var: ansible_env.HOME 
   register: molecule_install_home 
   become: no
 
