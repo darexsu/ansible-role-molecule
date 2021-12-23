@@ -5,7 +5,6 @@ Options:
 Dependencies:
   - Ansible
   - Docker
-
 # Installation user home directory:
 1) Install from Github (git installed on your server)
 ```
