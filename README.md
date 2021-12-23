@@ -1,4 +1,4 @@
-# Molecule with Docker driver. (for Debian)
+# Ansible role Molecule (for Debian)
 Options:
   - Molecule path for root [ /usr/bin ]
   - Molecule path for sudo [ /home/user/.local/bin ]
