@@ -1,13 +1,11 @@
 #--------molecule_install: true----------#
 - name: ensure dependencies are installed.
   ansible.builtin.apt:
-    name:
-      - python3-pip
-      - libssl-dev
-      - python3-venv
+    name: "{{ item }}"
     state: present
+  with_items: "{{ molecule_install_dependencies_list }}"
     
-#-molecule_install_virtualenv: false
+#-molecule_install_virtualenv: false | install to [ /home/user/.local/ ]
 - name: upgrade setuptools
   ansible.builtin.pip:
     name: "setuptools"   
@@ -22,12 +20,12 @@
     name: "molecule[ {{ item }} ]"  
     state: present
     extra_args: "--user" 
-  with_items: "{{ molecule_install_list }}"
+  with_items: "{{ molecule_install_packages_list }}"
   become: yes
   become_user: "{{ ansible_user }}"
   when: not molecule_install_virtualenv
   
-#-molecule_install_virtualenv: true
+#-molecule_install_virtualenv: true | install to virtualenv [ home/user/molecule ]
 - name: Check the path for Python
   command: which python3
   register: molecule_check_python_3_path 
@@ -41,5 +39,5 @@
     virtualenv: "{{ molecule_install_virtualenv_path }}"
     virtualenv_command: "{{ molecule_check_python_3_path.stdout }} -m venv"
     virtualenv_site_packages: "yes"
-  with_items: "{{ molecule_install_list }}"
+  with_items: "{{ molecule_install_packages_list }}"
   when: molecule_install_virtualenv
