@@ -6,11 +6,16 @@
       - python3-venv
     state: present
 
+- name: Check the path for Python
+  command: which python3
+  register: molecule_check_python_3_path 
+
 - name: install molecule in virtualenv
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"
     version: ""
     state: present
     virtualenv: "{{ molecule_install_virtualenv }}"
+    virtualenv_command: "{{ molecule_check_python_3_path.stdout }} -m venv"
     virtualenv_site_packages: "yes"
   with_items: "{{ molecule_install_list }}"
