@@ -8,7 +8,7 @@ Options:
 Dependencies:
   - Ansible
   - Docker
-# Installation in user home directory:
+# Installation without virtualenv:
 1) Install from Github (git installed on your server)
 ```
 ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
