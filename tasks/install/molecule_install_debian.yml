@@ -55,10 +55,14 @@
   register: molecule_check_python_3_path 
   when: molecule_install_virtualenv
   
-
+- name: Define version of php-fpm.service
+  set_fact:
+    molecule_install_virtualenv_path: "{{ ansible_env.HOME }}"
+  become: false
+  
 - name: asdsa 
   debug:
-   msg: "{{ ansible_facts }}"
+   msg: "{{ molecule_install_virtualenv_path }}"
 
 - name: install molecule in virtualenv
   ansible.builtin.pip:
