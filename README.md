@@ -6,7 +6,7 @@ Options:
 Dependencies:
   - Ansible
   - Docker
-# Installation user home directory:
+# Installation in user home directory:
 1) Install from Github (git installed on your server)
 ```
 ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
@@ -20,8 +20,7 @@ ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
   roles:
     - role: ansible-role-molecule
       vars:
-        molecule_install: true
-        molecule_install_virtualenv: true
+        molecule_install: true        
 ```
 Testing:
 1) init test role
@@ -45,7 +44,7 @@ molecule test
 molecule destroy
 ```
 
-# Installation with virtualenv:
+# Installation in virtualenv:
 1) Install from Github (git installed on your server)
 ```
 ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
