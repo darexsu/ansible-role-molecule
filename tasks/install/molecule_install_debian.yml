@@ -12,7 +12,9 @@
   ansible.builtin.pip:
     name: "setuptools"   
     state: present
-    extra_args: "--upgrade --user" 
+    extra_args: "--upgrade --user"
+  become: yes
+  become_user: "{{ ansible_user }}"
   when: not molecule_install_virtualenv
   
 - name: install molecule in /home/user/.local
@@ -21,6 +23,8 @@
     state: present
     extra_args: "--user" 
   with_items: "{{ molecule_install_list }}"
+  become: yes
+  become_user: "{{ ansible_user }}"
   when: not molecule_install_virtualenv
   
 #-molecule_install_virtualenv: true
