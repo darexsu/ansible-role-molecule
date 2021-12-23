@@ -4,7 +4,12 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ molecule_install_dependencies_list }}"
-    
+
+- name: check home path 
+  var: "{{ ansible_env.HOME }}"
+  register: molecule_install_home 
+  become: no
+
 #-molecule_install_virtualenv: false | install to [ /home/user/.local/ ]
 #-for sudo user
 - name: upgrade setuptools
@@ -58,7 +63,7 @@
 
 - name: asdsa 
   debug:
-   msg: "{{ ansible_env }} {{ molecule_install_virtualenv_path }}"
+   msg: "{{ ansible_env }} {{ molecule_install_home }}"
 
 
 
