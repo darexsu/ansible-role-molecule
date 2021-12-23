@@ -58,11 +58,11 @@
 - name: --------------
   set_fact:
     molecule_install_virtualenv_path: "{{ ansible_env.HOME }}"
-  become: no  
+  become: yes  
   
 - name: asdsa 
   debug:
-   msg: "{{ molecule_install_virtualenv_path }}"
+   msg: "{{ molecule_install_virtualenv_path }} {{ ansible_user }} {{ ansible_become_user}} "
 
 - name: install molecule in virtualenv
   ansible.builtin.pip:
