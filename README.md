@@ -23,23 +23,27 @@ ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
         molecule_install: true        
 ```
 Testing:
-1) init test role
+1) You have to re-login. if you are already logged as molecule-user.
+```
+exit
+```
+2) init test role
 ```
 molecule init role my_new_role --driver-name docker
 ```
-2) go to folder of role
+3) go to folder of role
 ```
 cd ./my_new_role
 ```
-3) enter author without spaces in ./my_new_role/meta/main.yml
+4) enter author without spaces in ./my_new_role/meta/main.yml
 ```
 sed -i 's/author: your name/author: your_name/' ./meta/main.yml
 ```
-4) testing
+5) testing
 ```
 molecule test
 ```
-5) destroy docker container
+6) destroy docker instance
 ```
 molecule destroy
 ```
