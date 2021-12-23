@@ -28,8 +28,6 @@
 - name: add path /.locale/bin to environment variables
   ansible.builtin.command:
     cmd: source {{ lookup('env','HOME') }}/.profile
-  become: yes
-  become_user: "{{ ansible_user }}"  
   when: not molecule_install_virtualenv
   
 #-molecule_install_virtualenv: true | install to virtualenv [ home/user/molecule ]
