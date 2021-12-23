@@ -1,4 +1,4 @@
-# Molecule for Debian. Docker
+# Molecule with Docker driver. (for Debian)
 Options:
   - install Molecule in user home directory
   - install Molecule in virtualenv
