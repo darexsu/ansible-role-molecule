@@ -60,9 +60,6 @@
   debug:
    msg: "{{ ansible_facts }}"
 
-
-
-
 - name: install molecule in virtualenv
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"
