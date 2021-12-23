@@ -1,7 +1,9 @@
 # Molecule with Docker driver. (for Debian)
 Options:
-  - install Molecule in user home directory
-  - install Molecule in virtualenv
+  - Molecule path for root [ /usr/bin ]
+  - Molecule path for sudo [ /home/user/.local/bin ]
+  - Molecule virtualenv for root [ /root/molecule ]
+  - Molecule virtualenv for sudo [ /home/user/molecule ]
 
 Dependencies:
   - Ansible
