@@ -15,7 +15,7 @@
   become_user: "{{ ansible_user }}"
   when: not molecule_install_virtualenv
   
-- name: install molecule in /home/user/.local
+- name: install molecule in {{ lookup('env','HOME') }}/.local
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"  
     state: present
