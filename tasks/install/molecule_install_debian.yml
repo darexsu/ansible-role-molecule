@@ -9,7 +9,10 @@
 - name: Check the path for Python
   command: which python3
   register: molecule_check_python_3_path 
-
+  
+- debug:
+   var: molecule_install_virtualenv 
+   
 - name: install molecule in virtualenv
   ansible.builtin.pip:
     name: "molecule[ {{ item }} ]"
