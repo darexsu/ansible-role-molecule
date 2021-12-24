@@ -46,8 +46,6 @@
     state: present    
   with_items: "{{ molecule_install_packages_list }}"  
   when: not molecule_install_virtualenv and ansible_user == "root"
-
-
   
 #--molecule_install_virtualenv: true | install to virtualenv [ home/user/molecule ]
 - name: check the path for Python
