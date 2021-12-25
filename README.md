@@ -18,7 +18,7 @@ Ansible dependencies:
 ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
 ```
 2) Example playbook
-```
+```yaml
 ---
 - hosts: all
   become: yes
@@ -60,7 +60,7 @@ molecule destroy
 ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
 ```
 2) Example playbook
-```
+```yaml
 ---
 - hosts: all
   become: yes
