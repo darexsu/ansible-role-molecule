@@ -1,5 +1,5 @@
 ---
-galaxy_info:
+galaxy_info:  
   author: "darexsu"
   role_name: "molecule"
   description: Easy setup Molecule.
@@ -14,3 +14,6 @@ galaxy_info:
         - bullseye
   galaxy_tags:
     - server
+  galaxy_tags:
+    - molecule
+    - testing
