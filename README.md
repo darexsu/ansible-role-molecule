@@ -15,7 +15,7 @@ Ansible dependencies:
 # Installation without virtualenv:
 1) Install from Github (git installed on your server)
 ```
-ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
+ansible-galaxy install darexsu.molecule
 ```
 2) Example playbook
 ```yaml
@@ -57,7 +57,7 @@ molecule destroy
 # Installation in virtualenv:
 1) Install from Github (git installed on your server)
 ```
-ansible-galaxy install git+https://github.com/darexsu/ansible-role-molecule.git
+ansible-galaxy install darexsu.molecule
 ```
 2) Example playbook
 ```yaml
