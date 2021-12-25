@@ -13,7 +13,7 @@ System dependencies:
 Ansible dependencies:
   - None
 # Installation without virtualenv:
-1) Install from Github (git installed on your server)
+1) Install from Galaxy
 ```
 ansible-galaxy install darexsu.molecule
 ```
@@ -24,7 +24,7 @@ ansible-galaxy install darexsu.molecule
   become: yes
 
   roles:
-    - role: ansible-role-molecule
+    - role: darexsu.molecule
       vars:
         molecule_install: true        
 ```
@@ -55,7 +55,7 @@ molecule destroy
 ```
 
 # Installation in virtualenv:
-1) Install from Github (git installed on your server)
+1) Install from Galaxy
 ```
 ansible-galaxy install darexsu.molecule
 ```
@@ -66,7 +66,7 @@ ansible-galaxy install darexsu.molecule
   become: yes
 
   roles:
-    - role: ansible-role-molecule
+    - role: darexsu.molecule
       vars:
         molecule_install: true
         molecule_install_virtualenv: true
