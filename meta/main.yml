@@ -1,7 +1,7 @@
 ---
 galaxy_info:  
   author: "darexsu"
-  role_name: "molecule"
+  role_name: "ansible-role-molecule"
   description: Easy setup Molecule.
   company: ""
   license: "license (BSD, MIT)"
@@ -11,9 +11,12 @@ galaxy_info:
       versions:
         - stretch
         - buster
-        - bullseye
-  galaxy_tags:
-    - server
+        - bullseye 
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+        - focal
   galaxy_tags:
     - molecule
     - testing

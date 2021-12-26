@@ -1,17 +1,17 @@
 # Ansible role Molecule (for Debian)
+
+Ansible dependencies: None
+
+Molecule dependencies: Ansible, Docker
+
+Platforms: Debian, Ubuntu
+
 Options:
   - Molecule path for root [ /usr/bin ]
   - Molecule path for sudo [ /home/user/.local/bin ]
   - Molecule virtualenv for root [ /root/molecule ]
   - Molecule virtualenv for sudo [ /home/user/molecule ]
 
-System dependencies:
-  - Debian
-  - Ansible. installed
-  - Docker. started
-
-Ansible dependencies:
-  - None
 # Installation without virtualenv:
 1) Install from Galaxy
 ```
