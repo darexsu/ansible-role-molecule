@@ -13,7 +13,5 @@ galaxy_info:
         - buster
         - bullseye
   galaxy_tags:
-    - server
-  galaxy_tags:
     - molecule
     - testing
