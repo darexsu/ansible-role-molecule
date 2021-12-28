@@ -9,9 +9,9 @@ Platforms: Debian, Ubuntu, RHEL, CentOS, Rocky, Oracle
 
 Options:
   - Molecule, ansible_user: sudo [ /home/user/.local/bin ]
-  - Molecule, ansible_user: root  [ /usr/bin ]                          not recommended
+  - Molecule, ansible_user: root  [ /usr/bin ]                         <font color='red'> not recommended</font>
   - Molecule in virtualenv ansible_user: sudo [ /home/user/molecule ] 
-  - Molecule in virtualenv ansible_user: root [ /root/molecule ]        not recommended
+  - Molecule in virtualenv ansible_user: root [ /root/molecule ]        <font color='red'>not recommended</font>
   
 
 # Installation without virtualenv:
