@@ -3,10 +3,14 @@ name: "CI Molecule"
 'on':
   schedule:
     - cron: "0 6 * * 3"
-
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    
 defaults:
   run:
-    working-directory: 'darexsu.molecule'
+    working-directory: 'darexsu.ssh'
 
 jobs:
   molecule:
@@ -26,7 +30,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v2
         with:
-          path: 'darexsu.molecule'
+          path: 'darexsu.ssh'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
