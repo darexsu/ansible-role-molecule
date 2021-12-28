@@ -46,7 +46,7 @@
       ansible.builtin.pip:
         name: "molecule[{{ item }}]"
         state: present
-        extra_args: "--ignore-installed" 
+        extra_args: "--ignore-installed"
       with_items: "{{ molecule_install_packages_list }}"
       when: ansible_user == "root"
   when: not molecule_install_virtualenv

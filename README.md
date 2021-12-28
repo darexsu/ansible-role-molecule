@@ -1,5 +1,5 @@
 # Ansible role Molecule (with Docker driver)
-
+[![CI Molecule](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml/badge.svg)](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml)
 Ansible dependencies: None
 
 Molecule dependencies: Ansible, Docker
@@ -8,9 +8,9 @@ Platforms: Debian, Ubuntu, RHEL, CentOS, Rocky, Oracle
 
 Options:
   - Molecule, ansible_user: sudo [ /home/user/.local/bin ]
-  - Molecule, ansible_user: root  [ /usr/bin ] not recommended
+  - Molecule, ansible_user: root  [ /usr/bin ]                          not recommended
   - Molecule in virtualenv ansible_user: sudo [ /home/user/molecule ] 
-  - Molecule in virtualenv ansible_user: root [ /root/molecule ] not recommended
+  - Molecule in virtualenv ansible_user: root [ /root/molecule ]        not recommended
   
 
 # Installation without virtualenv:
