@@ -1,6 +1,6 @@
-#----------Installation----------#
+---
+# ---------Installation--------- #
 molecule_install: false
-molecule_install_dependencies_list: [ python3-pip, libssl-dev, python3-venv, python3-docker ]
-molecule_install_packages_list: [ docker, lint ]
+molecule_install_packages_list: [docker, lint]
 molecule_install_virtualenv: false
 molecule_install_virtualenv_name: "molecule"
