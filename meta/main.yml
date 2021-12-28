@@ -11,7 +11,7 @@ galaxy_info:
       versions:
         - stretch
         - buster
-        - bullseye    
+        - bullseye
   galaxy_tags:
     - molecule
     - testing
