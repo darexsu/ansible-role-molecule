@@ -11,12 +11,7 @@ galaxy_info:
       versions:
         - stretch
         - buster
-        - bullseye
-    - name: Ubuntu
-      versions:
-        - trusty
-        - xenial
-        - focal
+        - bullseye    
   galaxy_tags:
     - molecule
     - testing
