@@ -56,3 +56,6 @@ scenario:
     # - verify
     # - cleanup
     - destroy
+# lint:
+# ansible-lint
+

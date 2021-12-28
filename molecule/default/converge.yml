@@ -12,3 +12,4 @@
     - role: darexsu.molecule
       vars:
         molecule_install: true
+        ansible_user: root
