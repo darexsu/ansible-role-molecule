@@ -1,17 +1,17 @@
-# Ansible role Molecule (for Debian)
+# Ansible role Molecule (with Docker driver)
+
+Ansible dependencies: None
+
+Molecule dependencies: Ansible, Docker
+
+Platforms: Debian, Ubuntu, RHEL, CentOS, Rocky, Oracle
+
 Options:
   - Molecule path for root [ /usr/bin ]
   - Molecule path for sudo [ /home/user/.local/bin ]
   - Molecule virtualenv for root [ /root/molecule ]
   - Molecule virtualenv for sudo [ /home/user/molecule ]
 
-System dependencies:
-  - Debian
-  - Ansible. installed
-  - Docker. started
-
-Ansible dependencies:
-  - None
 # Installation without virtualenv:
 1) Install from Galaxy
 ```
@@ -29,27 +29,32 @@ ansible-galaxy install darexsu.molecule
         molecule_install: true        
 ```
 Testing:
-1) You have to re-login. if you have already logged as molecule-user.
+
+1) Ensure docker.servise is running, and user in group "docker"
+```
+systemctl status docker
+```
+2) You have to re-login. if you have already logged as molecule-user.
 ```
 exit
 ```
-2) init test role
+3) init test role
 ```
 molecule init role my_new_role --driver-name docker
 ```
-3) go to folder of role
+4) go to folder of role
 ```
 cd ./my_new_role
 ```
-4) enter author without spaces in ./my_new_role/meta/main.yml
+5) enter author without spaces in ./my_new_role/meta/main.yml
 ```
 sed -i 's/author: your name/author: your_name/' ./meta/main.yml
 ```
-5) testing
+6) testing
 ```
 molecule test
 ```
-6) destroy docker instance
+7) destroy docker instance
 ```
 molecule destroy
 ```
@@ -72,31 +77,36 @@ ansible-galaxy install darexsu.molecule
         molecule_install_virtualenv: true
 ```
 Testing:
-1) activate virtualenv
+
+1) Ensure docker.servise is running, and user in group "docker"
+```
+systemctl status docker
+```
+2) activate virtualenv
 ```
 source molecule/bin/activate
 ```
-2) init test role
+3) init test role
 ```
 molecule init role my_new_role --driver-name docker
 ```
-3) go to folder of role
+4) go to folder of role
 ```
 cd ./my_new_role
 ```
-3) enter author without spaces in ./my_new_role/meta/main.yml
+5) enter author without spaces in ./my_new_role/meta/main.yml
 ```
 sed -i 's/author: your name/author: your_name/' ./meta/main.yml
 ```
-4) testing
+6) testing
 ```
 molecule test
 ```
-5) destroy docker container
+7) destroy docker container
 ```
 molecule destroy
 ```
-6) exit virtualenv
+8) exit virtualenv
 ```
 deactivate
 ```
