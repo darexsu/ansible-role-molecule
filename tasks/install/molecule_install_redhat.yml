@@ -31,7 +31,7 @@
       ansible.builtin.pip:
         name: "molecule[{{ item }}]"
         state: present
-        extra_args: "--user"        
+        extra_args: "--user --ignore-installed"       
       with_items: "{{ molecule_install_packages_list }}"
       become: yes
       become_user: "{{ ansible_user }}"
