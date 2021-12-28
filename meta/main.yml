@@ -17,10 +17,6 @@ galaxy_info:
         - trusty
         - xenial
         - focal
-    - name: EL
-      versions:
-        - 7
-        - 8
   galaxy_tags:
     - molecule
     - testing
