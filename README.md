@@ -1,5 +1,6 @@
 # Ansible role Molecule (with Docker driver)
 [![CI Molecule](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml/badge.svg)](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml)
+
 Ansible dependencies: None
 
 Molecule dependencies: Ansible, Docker
