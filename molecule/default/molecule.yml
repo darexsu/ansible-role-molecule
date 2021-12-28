@@ -58,4 +58,3 @@ scenario:
     - destroy
 # lint:
 # ansible-lint
-
