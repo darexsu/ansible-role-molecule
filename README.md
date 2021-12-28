@@ -7,10 +7,11 @@ Molecule dependencies: Ansible, Docker
 Platforms: Debian, Ubuntu, RHEL, CentOS, Rocky, Oracle
 
 Options:
-  - Molecule path for root [ /usr/bin ]
-  - Molecule path for sudo [ /home/user/.local/bin ]
-  - Molecule virtualenv for root [ /root/molecule ]
-  - Molecule virtualenv for sudo [ /home/user/molecule ]
+  - Molecule, ansible_user: sudo [ /home/user/.local/bin ]
+  - Molecule, ansible_user: root  [ /usr/bin ] not recommended
+  - Molecule in virtualenv ansible_user: sudo [ /home/user/molecule ] 
+  - Molecule in virtualenv ansible_user: root [ /root/molecule ] not recommended
+  
 
 # Installation without virtualenv:
 1) Install from Galaxy

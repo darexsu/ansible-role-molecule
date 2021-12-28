@@ -8,12 +8,21 @@
 
 - name: molecule_install_virtualenv - false
   block:
-    # ansible_user: sudo
+    #  ansible_user: sudo
+    - name: upgrade pip
+      ansible.builtin.pip:
+        name: pip
+        executable: pip3 
+        extra_args: --upgrade
+
+    - name: switch to python3
+      set_fact: ansible_python_interpreter=usr/bin/python3
+
     - name: upgrade setuptools
       ansible.builtin.pip:
         name: "setuptools"
         state: present
-        extra_args: "--upgrade --user"
+        extra_args: "--upgrade --user"        
       become: yes
       become_user: "{{ ansible_user }}"
       when: ansible_user != "root"
@@ -22,23 +31,25 @@
       ansible.builtin.pip:
         name: "molecule[{{ item }}]"
         state: present
-        extra_args: "--user"
+        extra_args: "--user"        
       with_items: "{{ molecule_install_packages_list }}"
       become: yes
       become_user: "{{ ansible_user }}"
       when: ansible_user != "root"
 
-    # ansible_user: root
+    # ansible_user: root    
     - name: upgrade setuptools
       ansible.builtin.pip:
         name: "setuptools"
         state: present
-      when: ansible_user == "root"
+        extra_args: "--upgrade"            
+      when: ansible_user == "root"  
 
-    - name: install molecule in /usr/bin
+    - name: install molecule
       ansible.builtin.pip:
         name: "molecule[{{ item }}]"
         state: present
+        extra_args: "--ignore-installed"                 
       with_items: "{{ molecule_install_packages_list }}"
       when: ansible_user == "root"
   when: not molecule_install_virtualenv
@@ -59,14 +70,24 @@
         molecule_install_home_directory: "{{ ansible_env.PWD }}"
       when: ansible_user != "root"
 
-    - name: install molecule in virtualenv
+    - name: upgrade pip in virtualenv
       ansible.builtin.pip:
-        name: "molecule[{{ item }}]"
-        version: ""
+        name: "pip"
+        extra_args: "--upgrade"
         state: present
         virtualenv: "{{ molecule_install_home_directory }}/{{ molecule_install_virtualenv_name }}"
         virtualenv_command: "{{ molecule_check_python_3_path.stdout }} -m venv"
-        virtualenv_site_packages: "yes"
+        virtualenv_site_packages: false             
+      become: yes
+      become_user: "{{ ansible_user }}"     
+    
+    - name: install molecule in virtualenv
+      ansible.builtin.pip:
+        name: "molecule[{{ item }}]"        
+        state: present
+        virtualenv: "{{ molecule_install_home_directory }}/{{ molecule_install_virtualenv_name }}"
+        virtualenv_command: "{{ molecule_check_python_3_path.stdout }} -m venv"
+        virtualenv_site_packages: false             
       become: yes
       become_user: "{{ ansible_user }}"
       with_items: "{{ molecule_install_packages_list }}"
