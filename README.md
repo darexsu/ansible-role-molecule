@@ -1,4 +1,4 @@
-# Ansible role Molecule (for Debian)
+# Ansible role Molecule (with Docker driver)
 
 Ansible dependencies: None
 
