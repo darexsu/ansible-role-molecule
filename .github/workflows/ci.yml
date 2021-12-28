@@ -1,12 +1,8 @@
 ---
 name: "CI Molecule"
 'on':
-    push:
-      branches: [ master ]
-    pull_request:
-      branches: [ master ]
-    schedule:
-      - cron: "0 6 * * 3"
+  schedule:
+    - cron: "0 6 * * 3"
 
 defaults:
   run:
