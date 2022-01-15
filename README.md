@@ -32,7 +32,7 @@ ansible-galaxy install darexsu.molecule
 ```
 Testing:
 
-1) Ensure docker.servise is running, and user in group "docker"
+1) Ensure docker.service is running, and user in group "docker"
 ```
 systemctl status docker
 ```
@@ -80,7 +80,7 @@ ansible-galaxy install darexsu.molecule
 ```
 Testing:
 
-1) Ensure docker.servise is running, and user in group "docker"
+1) Ensure docker.service is running, and user in group "docker"
 ```
 systemctl status docker
 ```
