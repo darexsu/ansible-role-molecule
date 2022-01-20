@@ -19,13 +19,11 @@ Options:
   
 
 # Installation without virtualenv:
-1) Install Docker
-
-2) Install ansible-role from Galaxy
+1) Install from Galaxy
 ```
 ansible-galaxy install darexsu.molecule
 ```
-3) Example playbook
+2) Example playbook
 ```yaml
 ---
 - hosts: all
