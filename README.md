@@ -1,9 +1,7 @@
 # Ansible role Molecule (with Docker driver)
 [![CI Molecule](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml/badge.svg)](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml)
 
-Molecule testing:
-
-| Platforms |    Debian     |    Ubuntu     |    CentOS     |  Rocky Linux |
+| Testing |    Debian     |    Ubuntu     |    CentOS     |  Rocky Linux |
 | --------- | ------------- | ------------- | ------------- | ------------ |
 |  Version  |   10, 11      | 18.04, 20.04  |     7, 8      |      8       |
 
