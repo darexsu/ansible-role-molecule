@@ -1,4 +1,8 @@
 ---
 - name: include molecule install
-  include_tasks: ./tasks/install/molecule_install_{{ ansible_os_family | lower }}.yml
-  when: molecule_install
+  include_tasks: ./tasks/install/molecule_install__{{ ansible_os_family | lower }}.yml
+  when: molecule_install and not molecule_install_virtualenv
+
+- name: include molecule install
+  include_tasks: ./tasks/install/molecule_install__{{ ansible_os_family | lower }}_virtualenv.yml
+  when: molecule_install and molecule_install_virtualenv

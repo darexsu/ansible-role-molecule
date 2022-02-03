@@ -1,5 +1,5 @@
 ---
-# ---------Installation--------- #
+# ------ install
 molecule_install: false
 molecule_install_packages_list: [docker, lint]
 molecule_install_virtualenv: false

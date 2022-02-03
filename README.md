@@ -1,22 +1,20 @@
 # Ansible role Molecule (with Docker driver)
-[![CI Molecule](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml/badge.svg)](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml)
+[![CI Molecule](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml/badge.svg)](https://github.com/darexsu/ansible-role-molecule/actions/workflows/ci.yml)&emsp;![Ansible Role](https://img.shields.io/ansible/role/d/57358?color=blue&label=downloads)
 
-| Testing |    Debian     |    Ubuntu     |    CentOS     |  Rocky Linux |
+| Testing |    Debian     |    Ubuntu     |    Rocky Linux     |  Oracle Linux |
 | --------- | ------------- | ------------- | ------------- | ------------ |
-|  Version  |   10, 11      | 18.04, 20.04  |     7, 8      |      8       |
-
-Dependencies: Docker
+|  Version  |   10, 11      | 18.04, 20.04  |      8        |       8       |
 
 Options:
-  - install
+  - [install](#installation)
     - ansible_user: sudo ( /home/user/.local/bin )
     - ansible_user: root  ( /usr/bin ) `not recommended`
-  - install in virtualenv
+  - [install in virtualenv](#install-in-virtualenv)
     - ansible_user: sudo ( /home/user/molecule ) 
     - ansible_user: root ( /root/molecule ) `not recommended`
   
 
-# Installation without virtualenv:
+### Installation:
 1) Install from Galaxy
 ```
 ansible-galaxy install darexsu.molecule
@@ -29,8 +27,8 @@ ansible-galaxy install darexsu.molecule
 
   roles:
     - role: darexsu.molecule
-      vars:
-        molecule_install: true        
+      # ------ install
+      molecule_install: true        
 ```
 Testing:
 
@@ -72,9 +70,9 @@ ansible-galaxy install darexsu.molecule
 
   roles:
     - role: darexsu.molecule
-      vars:
-        molecule_install: true
-        molecule_install_virtualenv: true
+      # ------ install
+      molecule_install: true
+      molecule_install_virtualenv: true
 ```
 Testing:
 

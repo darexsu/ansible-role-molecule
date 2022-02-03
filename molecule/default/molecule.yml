@@ -1,11 +1,11 @@
 ---
 dependency:
-  name: galaxy
+  name: galaxy 
 driver:
   name: docker
 platforms:
   - name: instance
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
+    image: "darexsu/molecule-${MOLECULE_DISTRO:-debian-11}:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -15,10 +15,8 @@ provisioner:
   name: ansible
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
-  inventory:
-    host_vars:
-      instance:
-        ansible_user: root
+  env:
+    ANSIBLE_COMMAND: ${MOLECULE_COMMAND:-""}
 scenario:
   create_sequence:
     - dependency
@@ -35,7 +33,7 @@ scenario:
     - destroy
   converge_sequence:
     - dependency
-    - create
+    # - create
     - prepare
     - converge
   destroy_sequence:
@@ -43,7 +41,7 @@ scenario:
     - cleanup
     - destroy
   test_sequence:
-    # - dependency
+    - dependency
     # - lint
     # - cleanup
     - destroy
@@ -56,5 +54,5 @@ scenario:
     # - verify
     # - cleanup
     - destroy
-# lint:
-# ansible-lint
+# lint: |
+#   yamllint .

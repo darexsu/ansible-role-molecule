@@ -1,0 +1,49 @@
+---
+- name: ensure dependencies are installed.
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items: "{{ molecule_install_dependencies_list_debian }}"
+
+- name: sudo user
+  block:
+    - name: upgrade setuptools
+      ansible.builtin.pip:
+        name: "setuptools"
+        state: present
+        extra_args: "--upgrade --user"
+      become: yes
+      become_user: "{{ ansible_user }}"
+
+    - name: install molecule in home/user/.local
+      ansible.builtin.pip:
+        name: "molecule[{{ item }}]"
+        state: present
+        extra_args: "--user --ignore-installed"
+      with_items: "{{ molecule_install_packages_list }}"
+      become: yes
+      become_user: "{{ ansible_user }}"      
+
+    - name: add path /.locale/bin to environment
+      ansible.builtin.shell:
+        cmd: ". ./.profile"
+      become: yes
+      become_user: "{{ ansible_user }}"  
+  when: ansible_user != "root"
+
+- name: root user
+  block:
+    - name: upgrade setuptools
+      ansible.builtin.pip:
+        name: "setuptools"
+        state: present  
+
+    - name: install molecule in /usr/bin
+      ansible.builtin.pip:
+        name: "molecule[{{ item }}]"
+        state: present
+        extra_args: "--ignore-installed"
+      with_items: "{{ molecule_install_packages_list }}" 
+  when: ansible_user == "root"
+
