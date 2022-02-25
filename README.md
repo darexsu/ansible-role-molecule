@@ -30,32 +30,6 @@ ansible-galaxy install darexsu.molecule
       # ------ install
       molecule_install: true        
 ```
-Testing:
-
-1) Ensure docker.service is running, and user in group "docker"
-```
-systemctl status docker
-```
-2) You have to re-login. if you have already logged as molecule-user.
-```
-exit
-```
-3) init test role
-```
-molecule init role my_new_role --driver-name docker
-```
-4) go to folder of role
-```
-cd ./my_new_role
-```
-5) Ensure author without spaces in ./my_new_role/meta/main.yml
-```
-sed -i 's/author: your name/author: your_name/' ./meta/main.yml
-```
-6) testing
-```
-molecule test
-```
 
 # Installation in virtualenv:
 1) Install from Galaxy
@@ -73,35 +47,5 @@ ansible-galaxy install darexsu.molecule
       # ------ install
       molecule_install: true
       molecule_install_virtualenv: true
-```
-Testing:
-
-1) Ensure docker.service is running, and user in group "docker"
-```
-systemctl status docker
-```
-2) activate virtualenv
-```
-source molecule/bin/activate
-```
-3) init test role
-```
-molecule init role my_new_role --driver-name docker
-```
-4) go to folder of role
-```
-cd ./my_new_role
-```
-5) Ensure author without spaces in ./my_new_role/meta/main.yml
-```
-sed -i 's/author: your name/author: your_name/' ./meta/main.yml
-```
-6) testing
-```
-molecule test
-```
-7) exit virtualenv
-```
-deactivate
 ```
 
