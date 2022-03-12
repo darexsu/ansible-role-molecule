@@ -9,7 +9,25 @@
 | Oracle Linux 8   |  :heavy_check_mark: |
 | Rocky Linux 8    |  :heavy_check_mark: |
 
+Replace or Merge dictionaries (with "hash_behaviour=replace" in ansible.cfg):
+```
+# Replace             # Merge
+---                   ---
+  vars:                 vars:
+    dict:                 merge:
+      a: "value"            dict: 
+      b: "value"              a: "value" 
+                              b: "value"
 
+# How does merge work?
+Your vars [host_vars]  -->  default vars [current role] --> default vars [include role]
+  
+  dict:          dict:              dict:
+    a: "1" -->     a: "1"    -->      a: "1"
+                   b: "2"    -->      b: "2"
+                                      c: "3"
+    
+```
 
 ##### 1) Install from Galaxy
 ```
