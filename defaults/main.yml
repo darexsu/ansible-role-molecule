@@ -1,6 +1,16 @@
 ---
-# ------ install
-molecule_install: false
-molecule_install_packages_list: [docker, lint]
-molecule_install_virtualenv: false
-molecule_install_virtualenv_name: "molecule"
+# Molecule
+molecule:
+  enabled: false
+
+# Molecule -> install
+molecule_install:
+  enabled: false
+  packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
+
+# Molecule -> constants
+molecule_const:
+  Debian:
+    dependencies: [python3-pip, libssl-dev, python3-docker]
+  RedHat:
+    dependencies: [gcc, python3-pip, python3-devel, openssl-devel, python3-libselinux]

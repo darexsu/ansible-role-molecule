@@ -1,8 +1,25 @@
 ---
-- name: include molecule install
-  include_tasks: ./tasks/install/molecule_install__{{ ansible_os_family | lower }}.yml
-  when: molecule_install and not molecule_install_virtualenv
+- name: merge dictionaries
+  block:
+    - include_vars:
+        file: ../../darexsu.molecule/defaults/main.yml
+        name: molecule_default_vars
+
+    - name: merge default and new dictionaries
+      set_fact:
+        "{{ item.key }}": "{{ molecule_default_vars[item.key] | combine(merge[item.key], recursive=True)}}"
+      when: molecule_default_vars[item.key] is defined
+      with_dict: "{{ merge }}"
+
+    - name: combine defaults vars with merge dictionary
+      set_fact:
+        merge: "{{ molecule_default_vars | combine(merge, recursive=True)}}"
+  when: merge is defined
+
+- name: molecule enable role
+  meta: end_play
+  when: not molecule.enabled
 
 - name: include molecule install
-  include_tasks: ./tasks/install/molecule_install__{{ ansible_os_family | lower }}_virtualenv.yml
-  when: molecule_install and molecule_install_virtualenv
+  include_tasks: ./tasks/install/molecule_install.yml
+  when: molecule_install.enabled

@@ -1,0 +1,30 @@
+---
+- name: ensure dependencies are installed.
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items: "{{ molecule_const[ansible_os_family]['dependencies'] }}"
+
+- name: upgrade pip
+  ansible.builtin.pip:
+    name: pip
+    executable: pip3
+    extra_args: --upgrade
+
+- name: upgrade setuptools
+  ansible.builtin.pip:
+    name: "setuptools"
+    state: present
+    executable: pip3
+    extra_args: "--upgrade --user"
+  become: false
+
+- name: install packages
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+    executable: pip3
+    extra_args: "--user --ignore-installed"
+  with_items: "{{ molecule_install['packages'] }}"
+  become: false

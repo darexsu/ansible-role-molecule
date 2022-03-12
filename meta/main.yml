@@ -2,24 +2,20 @@
 galaxy_info:
   author: "darexsu"
   role_name: "molecule"
-  description: Easy setup Molecule.
+  description: install Molecule RedHat/Debian
   company: ""
-  license: "license (BSD, MIT)"
-  min_ansible_version: 2.4
+  license: "license (MIT)"
+  min_ansible_version: 2.9
   platforms:
     - name: Debian
       versions:
-        - stretch
         - buster
         - bullseye
     - name: Ubuntu
       versions:
-        - trusty
-        - xenial
         - focal
     - name: EL
       versions:
-        - 7
         - 8
   galaxy_tags:
     - molecule

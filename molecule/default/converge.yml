@@ -1,15 +1,25 @@
 ---
 - name: Converge
   hosts: all
+  become: true
 
   pre_tasks:
-  - name: Unnessessary command
-    ansible.builtin.shell:
-      cmd: "{{ lookup('env', 'ANSIBLE_COMMAND') }}"
-    when: lookup('env', 'ANSIBLE_COMMAND') | length > 0
+    - name: Unnessessary command
+      ansible.builtin.shell:
+        cmd: "{{ lookup('env', 'ANSIBLE_COMMAND') }}"
+      when: lookup('env', 'ANSIBLE_COMMAND') | length > 0
 
-  roles:
-    - role: darexsu.molecule
-      vars:
-        molecule_install: true
-        ansible_user: root
+  vars:
+    merge:
+      # Molecule
+      molecule:
+        enabled: true
+      # Molecule -> install
+      molecule_install:
+        enabled: true
+        packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
+
+  tasks:
+    - name: include role darexsu.molecule
+      include_role:
+        name: darexsu.molecule
