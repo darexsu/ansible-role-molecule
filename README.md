@@ -5,9 +5,11 @@
   - Role:
       - [platforms](#platforms)
       - [install](#install)
-      - [behaviour](#behaviour)
-  - Playbooks:
-      - [install and configure: Molecule](#install-and-configure-molecule)
+      - [merge behaviour](#merge-behaviour)
+  - Playbooks (merge version):
+      - [install and configure: Molecule](#install-and-configure-molecule-merge-version)
+  - Playbooks (full version):
+      - [install and configure: Molecule](#install-and-configure-molecule-full-version)
 
 ### Platforms
 
@@ -25,7 +27,7 @@
 ansible-galaxy install darexsu.molecule --force
 ```
 
-### Behaviour
+### Merge behaviour
 
 Replace or Merge dictionaries (with "hash_behaviour=replace" in ansible.cfg):
 ```
@@ -47,7 +49,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
     
 ```
 
-### Install and configure: Molecule
+### Install and configure: Molecule (merge version)
 
 requirements: ansible_user: "not root"
 
@@ -64,7 +66,29 @@ requirements: ansible_user: "not root"
       # Molecule -> install
       molecule_install:
         enabled: true
-        packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
+
+  tasks:
+    - name: include role darexsu.molecule
+      include_role:
+        name: darexsu.molecule
+```
+### Install and configure: Molecule (full version)
+
+requirements: ansible_user: "not root"
+
+```yaml
+---
+- hosts: all
+  become: true
+
+  vars:
+    # Molecule
+    molecule:
+      enabled: true
+    # Molecule -> install
+    molecule_install:
+      enabled: true
+      packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
 
   tasks:
     - name: include role darexsu.molecule

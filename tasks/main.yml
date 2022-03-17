@@ -20,6 +20,6 @@
   meta: end_play
   when: not molecule.enabled
 
-- name: include molecule install
-  include_tasks: ./tasks/install/molecule_install.yml
+- name: "-> 01_Molecule_install.yml"
+  include_tasks: ./tasks/01_Molecule_install.yml
   when: molecule_install.enabled
