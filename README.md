@@ -7,9 +7,9 @@
       - [install](#install)
       - [merge behaviour](#merge-behaviour)
   - Playbooks (merge version):
-      - [install and configure: Molecule](#install-and-configure-molecule-merge-version)
+      - [install: Molecule](#install-molecule-merge-version)
   - Playbooks (full version):
-      - [install and configure: Molecule](#install-and-configure-molecule-full-version)
+      - [install: Molecule](#install-molecule-full-version)
 
 ### Platforms
 
@@ -49,7 +49,7 @@ Your vars [host_vars]  -->  default vars [current role] --> default vars [includ
     
 ```
 
-### Install and configure: Molecule (merge version)
+### Install: Molecule (merge version)
 
 requirements: ansible_user: "not root"
 
@@ -72,7 +72,7 @@ requirements: ansible_user: "not root"
       include_role:
         name: darexsu.molecule
 ```
-### Install and configure: Molecule (full version)
+### Install: Molecule (full version)
 
 requirements: ansible_user: "not root"
 
