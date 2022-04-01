@@ -26,5 +26,5 @@
     state: present
     executable: pip3
     extra_args: "--user --ignore-installed"
-  with_items: "{{ molecule_install['packages'] }}"
+  with_items: "{{ molecule_const[ansible_os_family]['packages'] }}"
   become: false

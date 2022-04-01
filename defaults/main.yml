@@ -6,11 +6,12 @@ molecule:
 # Molecule -> install
 molecule_install:
   enabled: false
-  packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
 
 # Molecule -> constants
 molecule_const:
   Debian:
+    packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
     dependencies: [python3-pip, libssl-dev, python3-docker]
   RedHat:
+    packages: [ansible-core, molecule, "molecule[docker]", "molecule[lint]"]
     dependencies: [gcc, python3-pip, python3-devel, openssl-devel, python3-libselinux]
